@@ -11,6 +11,7 @@ public class RatingResource {
 
     @RequestMapping("/{movieId}")
     public Rating getRating(@PathVariable("movieId") String movieId) {
+        // This will always return a rating of 4 for any movieId
         return new Rating(movieId, 4);
     }
 }

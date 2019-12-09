@@ -1,9 +1,14 @@
-package com.roccorichie.movieinfoservice.models;
+package com.roccorichie.moviecatalogservice.models;
 
 public class Movie {
 
     private String movieId;
     private String name;
+
+    // Need an empty constructor so it can be un-marshalled
+    public Movie() {
+
+    }
 
     public Movie(String movieId, String name) {
         this.movieId = movieId;

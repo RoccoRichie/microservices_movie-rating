@@ -1,4 +1,4 @@
-package com.roccorichie.movieratingservice.models;
+package com.roccorichie.moviecatalogservice.models;
 
 public class Rating {
 
