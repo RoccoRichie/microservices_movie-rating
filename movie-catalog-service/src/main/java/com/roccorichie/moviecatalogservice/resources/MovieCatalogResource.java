@@ -24,8 +24,10 @@ public class MovieCatalogResource {
 
         UserRating ratings = restTemplate.getForObject("http://localhost:8083/ratingsdata/users/" + userId, UserRating.class);
 
+        assert ratings != null;
         List<CatalogItem> movieList = ratings.getUserRating().stream().map(rating -> {
             // RestTemplate -> Making a call to the API and un-marshalling the object
+            // This is synchronous - not asynchronous (WebClient)
             Movie movie = restTemplate.getForObject("http://localhost:8082/movies/" + rating.getMovieId(), Movie.class);
 
             assert movie != null;
