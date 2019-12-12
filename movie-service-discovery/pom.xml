@@ -9,7 +9,7 @@
         <version>2.2.2.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.example</groupId>
+    <groupId>com.roccorichie</groupId>
     <artifactId>movie-service-discovery</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>movie-service-discovery</name>

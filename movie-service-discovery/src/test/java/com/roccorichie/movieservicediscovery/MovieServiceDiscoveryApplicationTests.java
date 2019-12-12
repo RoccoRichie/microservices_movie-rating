@@ -1,4 +1,4 @@
-package com.example.movieservicediscovery;
+package com.roccorichie.movieservicediscovery;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
