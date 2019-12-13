@@ -20,15 +20,12 @@ public class MovieCatalogResource {
 
     @RequestMapping("/{userId}")
     public MovieCatalog getCatalog(@PathVariable("userId") String userId) {
-    //public List<CatalogItem> getCatalog(@PathVariable("userId") String userId) {
-
-        UserRating ratings = restTemplate.getForObject("http://localhost:8083/ratingsdata/users/" + userId, UserRating.class);
+        // remove the hardcoded URL and use the load balanced to query eureka
+        UserRating ratings = restTemplate.getForObject("http://movie-rating-service/ratingsdata/users/" + userId, UserRating.class);
 
         assert ratings != null;
         List<CatalogItem> movieList = ratings.getUserRating().stream().map(rating -> {
-            // RestTemplate -> Making a call to the API and un-marshalling the object
-            // This is synchronous - not asynchronous (WebClient)
-            Movie movie = restTemplate.getForObject("http://localhost:8082/movies/" + rating.getMovieId(), Movie.class);
+            Movie movie = restTemplate.getForObject("http://movie-info-service/movies/" + rating.getMovieId(), Movie.class);
 
             assert movie != null;
             return new CatalogItem(movie.getName(), "Awesome", rating.getRating());
